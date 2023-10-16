@@ -7,8 +7,19 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  userName: string = 'Username'
-  constructor(private firebaseService: FirebaseService) { }
+  userName: string = 'Username';
+
+  constructor(private firebaseService: FirebaseService) {
+    let userUid = localStorage.getItem('userUid');
+    
+    this.firebaseService.GetDataWithId('/users/',userUid).subscribe(async (res:any) => {
+      const data = res.payload.data(); 
+      this.userName = data.username;
+
+    })
+
+  
+  }
 
   logOut() {
     this.firebaseService.Logout();
