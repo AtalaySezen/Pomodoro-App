@@ -7,6 +7,7 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  userName: string = 'Username'
   constructor(private firebaseService: FirebaseService) { }
 
   logOut() {
@@ -14,5 +15,5 @@ export class HomeComponent {
   }
 
 
-  
+
 }

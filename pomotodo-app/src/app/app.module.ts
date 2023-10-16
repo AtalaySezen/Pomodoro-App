@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RegisteraccountComponent } from './pages/registeraccount/registeraccount.component';
+import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegisteraccountComponent } from './pages/registeraccount/registeraccoun
     SettingComponent,
     LoginComponent,
     RegisteraccountComponent,
+    PomotodoTodoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,25 @@
-<p>home works!</p>
-<button (click)="logOut()">logout</button>
+<section class="container-home">
+    <div class="header">
+        <h1 class="app-header">Pomotodo</h1>
+        <div>
+            <p class="username">
+                {{userName}}
+            </p>
+        </div>
+    </div>
+
+    <div class="flex-row">
+        <div class="border-pomo">
+            <app-pomo-timer></app-pomo-timer>
+        </div>
+        <div class="border-pomo">
+            <app-pomotodo-todo></app-pomotodo-todo>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <button (click)="logOut()">logout</button> -->
+</section>

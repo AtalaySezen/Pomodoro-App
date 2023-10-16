@@ -23,8 +23,27 @@ body {
     align-items: center;
     justify-content: center;
 }
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
 .btn-flex {
     button {
         width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .flex-row {
+        flex-wrap: wrap;
+        flex-direction: column;
     }
 }

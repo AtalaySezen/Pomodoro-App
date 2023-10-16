@@ -1,1 +1,19 @@
-<p>pomo-timer works!</p>
+<div class="timer">
+    <div class="flex-col timer-btn">
+        <div class="timer-container">
+            <div *ngIf="!timerRunning">
+                <input class="timer-input" [disabled]="timerRunning" [(ngModel)]="selectedTime"
+                    (ngModelChange)="updateRemainingTime($event)" matInput placeholder="Dakika">
+            </div>
+            <div *ngIf="timerRunning">
+                <p class="timer-text">Kalan süre: {{ formatRemainingTime()}}</p>
+            </div>
+        </div>
+        <div class="btn-flex timer-btn">
+            <button mat-raised-button color="primary" *ngIf="!timerRunning" (click)="startTimer()">Start
+                Pomotodo</button>
+            <button mat-raised-button color="warn" *ngIf="timerRunning" (click)="stopTimer()">Stop Pomotodo</button>
+        </div>
+    </div>
+
+</div>
