@@ -1,1 +1,34 @@
-<p>registeraccount works!</p>
+<section class="container bg-login">
+    <div>
+        <h1 class="header-login">Register Account</h1>
+    </div>
+    <div [formGroup]="loginForm">
+        <div class="example-container">
+            <mat-form-field>
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required>
+                <mat-error *ngIf="loginForm.get('email').invalid">Email is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="username" required>
+                <mat-error *ngIf="loginForm.get('username').invalid">Name is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input type="password" matInput placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="loginForm.get('password').invalid">Password is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="btn-flex">
+            <button (click)="registerAccount()" mat-raised-button color="accent" [disabled]="loginForm.invalid">Sign Up</button>
+        </div>
+
+    </div>
+
+
+</section>

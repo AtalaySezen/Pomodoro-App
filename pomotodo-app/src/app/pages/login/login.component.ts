@@ -26,8 +26,12 @@ export class LoginComponent {
     let email = this.loginForm.get('email')?.value;
     let password = this.loginForm.get('password')?.value;
 
-    this.fireAuth.signInWithEmailAndPassword(email, password).then(() => {
-      localStorage.setItem('token', 'true'); //Set token
+    this.fireAuth.signInWithEmailAndPassword(email, password).then(userCredential => {
+      const user = userCredential.user; 
+      const uid = user.uid; 
+      
+      localStorage.setItem('userUid',uid); 
+      localStorage.setItem('token', 'true'); 
       this.router.navigate(['/home']);
     }, err => {
       this.router.navigate(['/login']);
