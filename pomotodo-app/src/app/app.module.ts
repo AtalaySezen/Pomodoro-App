@@ -24,7 +24,6 @@ import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.
   declarations: [
     AppComponent,
     HomeComponent,
-    LoaderComponent,
     PomoTimerComponent,
     SettingComponent,
     LoginComponent,
@@ -34,6 +33,7 @@ import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.
   imports: [
     BrowserModule,
     FormsModule,
+    LoaderComponent,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireModule,
     CommonModule,
