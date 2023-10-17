@@ -10,17 +10,22 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
 export class HomeComponent {
   userName: string = '';
 
-  constructor(private firebaseService: FirebaseService,private authService:AuthService) {
-    this.firebaseService.GetDataWithId('/users/',this.authService.userUid).subscribe(async (res:any) => {
-      const data = res.payload.data(); 
-      this.userName = data.username;
-    })
+  constructor(private firebaseService: FirebaseService, private authService: AuthService) {
+  }
 
-  
+  ngOnInit() {
+    this.getUserDatas();
   }
 
   logOut() {
     this.firebaseService.Logout();
+  }
+
+  getUserDatas() {
+    this.firebaseService.GetDataWithId('/users/', this.authService.userUid).subscribe(async (res: any) => {
+      const data = res.payload.data();
+      this.userName = data.username;
+    })
   }
 
 
