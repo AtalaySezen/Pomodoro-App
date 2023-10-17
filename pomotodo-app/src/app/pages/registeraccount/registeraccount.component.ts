@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
 
 @Component({
@@ -11,9 +12,8 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
 })
 export class RegisteraccountComponent {
   loginForm: FormGroup;
-  token = localStorage.getItem('token');
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router, private firebaseService:FirebaseService) {
+  constructor(private fireAuth: AngularFireAuth, private router: Router, private authService: AuthService, private firebaseService: FirebaseService) {
     this.checkUserLogged();
 
     this.loginForm = new FormGroup({
@@ -30,28 +30,29 @@ export class RegisteraccountComponent {
     let username = this.loginForm.get('username')?.value;
     let password = this.loginForm.get('password')?.value;
 
-    this.fireAuth.createUserWithEmailAndPassword(email,password).then(userCredential=>{
-      const user = userCredential.user; 
-      const uid = user.uid; 
+    this.fireAuth.createUserWithEmailAndPassword(email, password).then(userCredential => {
+      const user = userCredential.user;
+      const uid = user.uid;
 
       let data = {
-        email:email,
-        pomotodoTime:25,
-        pomotodos : [''],
-        todos:[''],
-        username:username
+        email: email,
+        pomotodoTime: 25,
+        pomotodos: [''],
+        todos: [''],
+        username: username
       }
-      this.firebaseService.addDataWithCustomUid(uid,data);
+
+      this.firebaseService.addDataWithCustomUid(uid, data);
       this.router.navigate(['/login']);
 
-    },err=>{
+    }, err => {
       console.log(err);
     })
 
   }
-  
-  checkUserLogged(){
-    if (this.token) {
+
+  checkUserLogged() {
+    if (this.authService.tokenInfo) {
       this.router.navigate(['/home']);
     } else {
       return;

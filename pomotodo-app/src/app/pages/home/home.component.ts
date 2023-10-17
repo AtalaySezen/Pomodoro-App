@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
 
 @Component({
@@ -7,15 +8,12 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  userName: string = 'Username';
+  userName: string = '';
 
-  constructor(private firebaseService: FirebaseService) {
-    let userUid = localStorage.getItem('userUid');
-    
-    this.firebaseService.GetDataWithId('/users/',userUid).subscribe(async (res:any) => {
+  constructor(private firebaseService: FirebaseService,private authService:AuthService) {
+    this.firebaseService.GetDataWithId('/users/',this.authService.userUid).subscribe(async (res:any) => {
       const data = res.payload.data(); 
       this.userName = data.username;
-
     })
 
   
