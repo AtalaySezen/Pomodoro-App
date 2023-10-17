@@ -57,6 +57,7 @@ body {
     .flex-row {
         flex-wrap: wrap;
         flex-direction: column;
+        justify-content: flex-start;
     }
 }
 
