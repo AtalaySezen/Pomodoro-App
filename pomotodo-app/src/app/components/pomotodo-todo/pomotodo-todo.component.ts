@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./pomotodo-todo.component.scss']
 })
 export class PomotodoTodoComponent {
-
+  loader:boolean = false;
 }

@@ -1,1 +1,23 @@
-<p>pomotodo-todo works!</p>
+<div class="timer">
+    <div class="loader-flex" *ngIf="loader">
+        <app-loader [diameter]="50"></app-loader>
+    </div>
+    <div class="flex-col timer-btn" *ngIf="!loader">
+        <div class="timer-container">
+            <div class="timer-user">
+                <mat-icon class="close-btn">keyboard_return</mat-icon>
+                <input class="timer-input" matInput placeholder="Todo Name">
+            </div>
+        </div>
+        <div class="old-pomos">
+            <div>
+                <ul>
+                    <span>Last 10 Todos</span>
+                    <span>
+                        <!---Item-->
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
