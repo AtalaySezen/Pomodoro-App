@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RegisteraccountComponent } from './pages/registeraccount/registeraccount.component';
 import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireModule,
     CommonModule,
+    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,

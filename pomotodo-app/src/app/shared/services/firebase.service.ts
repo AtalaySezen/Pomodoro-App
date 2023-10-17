@@ -29,7 +29,7 @@ export class FirebaseService {
     return this.firebaseData.collection('/users').doc(uid).set(data);
   }
 
-  UpdateFirebaseData(url: string, id: number, data: any) {
+  UpdateFirebaseData(url: string, id: any, data: any) {
     return this.firebaseData.doc(url + id).update(data);
   }
 
