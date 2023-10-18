@@ -8,7 +8,7 @@
         justify-content: center;
         width: 100%;
     }
-    .timer-user{
+    .timer-user {
         min-height: 45px;
     }
     .timer-input {
@@ -62,6 +62,7 @@
     ul {
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
     }
@@ -72,15 +73,19 @@
         }
     }
     li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         list-style: none;
         margin: 2px 0;
         font-size: 0.8rem;
     }
+    mat-icon {
+        height: 37px;
+        width: 30px;
+        cursor: pointer;
+    }
     span {
         color: gray;
     }
-
 }
-
-
-

@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./pomo-timer.component.scss']
 })
 export class PomoTimerComponent {
-  selectedTime: number = 25;
+  selectedTime: number = 1;
   timerInterval: any;
   minutes: number = this.selectedTime;
   seconds: number = 0;

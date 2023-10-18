@@ -5,17 +5,21 @@
     <div class="flex-col timer-btn" *ngIf="!loader">
         <div class="timer-container">
             <div class="timer-user">
-                <mat-icon class="close-btn">keyboard_return</mat-icon>
-                <input class="timer-input" matInput placeholder="Todo Name">
+                <mat-icon (click)="saveTodos()" class="close-btn">keyboard_return</mat-icon>
+                <input (keydown)="enterPressed($event)" class="timer-input" matInput placeholder="Todo Name"
+                    [(ngModel)]="todosInput">
             </div>
         </div>
         <div class="old-pomos">
             <div>
                 <ul>
-                    <span>Last 10 Todos</span>
-                    <span>
-                        <!---Item-->
-                    </span>
+                    <span class="list-span">Last 10 Todos</span>
+                    <li *ngFor="let item of todosArray">
+                        <span>
+                            {{item}}
+                        </span>
+                        <mat-icon (click)="todoHasDone(item)">done</mat-icon>
+                    </li>
                 </ul>
             </div>
         </div>
