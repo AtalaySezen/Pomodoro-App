@@ -4,7 +4,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1212px;
     margin: 0 auto;
     margin-top: 1rem;
     height: 100vh;
@@ -12,19 +12,22 @@
     .app-header {
         font-weight: 500;
     }
+    .app {
+        width: 100%;
+    }
     .border-pomo {
-            border: 1px solid #ddd;
-            min-width: 50%;
-            margin: 0 5px;
-            min-height: 600px;
-            overflow: hidden;
-            text-align: center;
-            flex: auto;
-            padding: 20px; 
-            width: fit-content;
-            min-height: 150px;
-            height: fit-content;
-            margin: 5px;
+        border: 1px solid #ddd;
+        width: 100%;
+        max-width: 50%;
+        min-height: 600px;
+        overflow: hidden;
+        text-align: center;
+        flex: auto;
+        padding: 20px;
+        width: fit-content;
+        margin: 0 5px;
+        min-height: 150px;
+        height: fit-content;
     }
 
     .header {
@@ -33,6 +36,16 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+    }
+    .container-detail {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        border: 1px solid #ddd;
     }
 
     @media (max-width: 900px) {

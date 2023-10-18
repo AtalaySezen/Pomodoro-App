@@ -12,9 +12,9 @@
         </div>
         <div class="old-pomos">
             <div class="list">
-                <p class="header">Last 5 Todos</p>
+                <p class="header">Last 10 Todos</p>
                 <div class="todo-description">
-                    <div class="todo" *ngFor="let item of todosArray|slice:0:5">
+                    <div class="todo" *ngFor="let item of todosArray|slice:0:10">
                         <mat-icon class="icon-circle" *ngIf="item" (click)="todoHasDone(item)">check_circle</mat-icon>
                         <p class="todo-text">
                             {{item}}

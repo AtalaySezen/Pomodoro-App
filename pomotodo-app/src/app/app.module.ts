@@ -24,6 +24,7 @@ import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.
 import { HeaderComponent } from './components/header/header.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ContainerDetailComponent } from './components/container-detail/container-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PomotodoTodoComponent,
     HeaderComponent,
     SnackbarComponent,
+    ContainerDetailComponent,
   ],
   imports: [
     BrowserModule,

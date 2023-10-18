@@ -1,7 +1,7 @@
 <section class="container-home">
     <app-header></app-header>
 
-    <div class="flex-row">
+    <div class="flex-row app">
         <div class="border-pomo">
             <app-pomo-timer></app-pomo-timer>
         </div>
@@ -9,4 +9,13 @@
             <app-pomotodo-todo></app-pomotodo-todo>
         </div>
     </div>
+
+    <div class="app">
+        <div class="container-detail">
+            <app-container-detail [infoHeader]="'Finished Pomotodos'" [infoText]="'565'" [iconName]="'circle'"></app-container-detail>
+            <app-container-detail [infoHeader]="'Finished Todos'" [iconName]="'done'"
+                [infoText]="numberOfFinishedTodos"></app-container-detail>
+        </div>
+    </div>
+
 </section>
