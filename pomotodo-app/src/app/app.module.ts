@@ -14,12 +14,14 @@ import { SettingComponent } from './pages/setting/setting.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { firebaseConfig } from 'src/environments/environments';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RegisteraccountComponent } from './pages/registeraccount/registeraccount.component';
 import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {MatIconModule} from '@angular/material/icon';
     LoginComponent,
     RegisteraccountComponent,
     PomotodoTodoComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    DropdownMenuComponent,
     MatInputModule,
     MatButtonModule,
     RouterModule,

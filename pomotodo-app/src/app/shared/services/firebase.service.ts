@@ -8,10 +8,6 @@ export class FirebaseService {
 
   constructor(private firebaseData: AngularFirestore) { }
 
-  Logout() {
-    localStorage.removeItem('token');
-  }
-
   GetAllDatas(url: string) {
     return this.firebaseData.collection(url).snapshotChanges();
   }

@@ -9,26 +9,12 @@
     margin-top: 1rem;
     height: 100vh;
 
-    .app-header {
-        font-weight: 500;
-    }
     .border-pomo {
         border: 1px solid #ddd;
         width: 50%;
         height: 50%;
         margin: 0 5px;
         text-align: center;
-    }
-    .username {
-        font-weight: 550;
-        font-size: 0.9rem;
-    }
-    .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
     }
 
     @media (max-width: 900px) {

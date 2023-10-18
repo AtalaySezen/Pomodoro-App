@@ -1,0 +1,22 @@
+<button mat-button [matMenuTriggerFor]="menu">
+    <div class="menu-flex">
+        <span class="username">
+            {{userName}}
+        </span>
+        <mat-icon>menu</mat-icon>
+    </div>
+</button>
+<mat-menu #menu="matMenu" class="menu">
+    <button mat-menu-item [routerLink]="'/home'">
+        <mat-icon>home</mat-icon>
+        Pomotodo
+    </button>
+    <button mat-menu-item [routerLink]="'/settings'">
+        <mat-icon>settings</mat-icon>
+        Settings
+    </button>
+    <button mat-menu-item (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        Logout
+    </button>
+</mat-menu>

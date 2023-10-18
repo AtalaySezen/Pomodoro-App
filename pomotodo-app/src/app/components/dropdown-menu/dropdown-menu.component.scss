@@ -1,0 +1,20 @@
+.menu-flex {
+    display: flex;
+    align-items: center;
+
+    .username {
+        margin: 0 4px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    mat-icon {
+        color: black;
+    }
+}
+button mat-icon {
+    font-weight: 400;
+    z-index: 999;
+    color: gray;
+    font-weight: 500;
+    transform: scale(0.8);
+}

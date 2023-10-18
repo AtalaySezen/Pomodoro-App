@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateFn } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private firebaseService: FirebaseService) { }
+  constructor(private router: Router, private firebaseService: FirebaseService, private authService: AuthService) { }
 
 
   canActivate(
@@ -20,7 +21,7 @@ export class AuthGuard implements CanActivate {
     if (token == 'true') {
       return true;
     } else {
-      this.firebaseService.Logout();
+      this.authService.Logout();
       this.router.navigate(['login']);
       return false;
     }

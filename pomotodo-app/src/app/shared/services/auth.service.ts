@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+
   get tokenInfo() {
     if (localStorage.getItem(`token`) != null) {
       return localStorage.getItem(`token`) || '';
@@ -12,6 +13,7 @@ export class AuthService {
       return null;
     }
   }
+
 
   get userUid() {
     if (localStorage.getItem(`userUid`) != null) {
@@ -26,7 +28,10 @@ export class AuthService {
   }
 
 
-
+  Logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userUid');
+  }
 
 
 
