@@ -42,7 +42,7 @@ export class RegisteraccountComponent {
         username: username
       }
 
-      this.firebaseService.addDataWithCustomUid(uid, data);
+      this.firebaseService.addDataWithCustomUid('/users', uid, data);
       this.router.navigate(['/login']);
 
     }, err => {

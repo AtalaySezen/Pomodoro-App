@@ -59,30 +59,44 @@
         border-top: 1px solid #ddd;
         margin-top: 15px;
     }
-    ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+    .list {
+        margin-top: 5px;
         width: 100%;
     }
-    ul {
-        span {
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
+    .header {
+        font-size: 0.9rem;
     }
-    li {
+    .todo-text {
+        text-align: left;
+        text-transform: capitalize;
+        width: 100%;
+        margin: 0;
+    }
+    .todo {
         display: flex;
         align-items: center;
         justify-content: center;
-        list-style: none;
-        margin: 2px 0;
-        font-size: 0.8rem;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .todo:nth-child(odd) {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .todo:nth-child(even) {
+        border-top: 1px solid #ddd;
     }
     mat-icon {
-        height: 37px;
         width: 30px;
+        transform: scale(0.9);
+    }
+    .icon-circle {
+        color: red;
+        cursor: pointer;
+    }
+    .icon-delete {
+        color: gray;
         cursor: pointer;
     }
     span {
