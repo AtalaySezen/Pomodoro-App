@@ -11,16 +11,17 @@
             </div>
         </div>
         <div class="old-pomos">
-            <div>
-                <ul>
-                    <span class="list-span">Last 10 Todos</span>
-                    <li *ngFor="let item of todosArray">
-                        <span>
+            <div class="list">
+                <p class="header">Last 5 Todos</p>
+                <div class="todo-description">
+                    <div class="todo" *ngFor="let item of todosArray|slice:0:5">
+                        <mat-icon class="icon-circle" *ngIf="item" (click)="todoHasDone(item)">check_circle</mat-icon>
+                        <p class="todo-text">
                             {{item}}
-                        </span>
-                        <mat-icon (click)="todoHasDone(item)">done</mat-icon>
-                    </li>
-                </ul>
+                        </p>
+                        <mat-icon class="icon-delete" *ngIf="item" (click)="deleteTodo(item)">delete</mat-icon>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

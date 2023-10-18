@@ -11,6 +11,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 export class PomotodoTodoComponent {
   loader: boolean = false;
   todosArray: any[] = [];
+  oldTodos: any[] = [];
   todosInput: string;
   constructor(private firebaseService: FirebaseService, private authService: AuthService, private snackbar: SnackbarService) { }
 
@@ -25,6 +26,12 @@ export class PomotodoTodoComponent {
       const allDatas = data.payload.data();
       this.todosArray = allDatas.todos.reverse();
       this.loader = false;
+    })
+
+    this.firebaseService.GetDataWithId('todosdone', this.authService.userUid).subscribe((data: any) => {
+      this.oldTodos = [];
+      const allTodos = data.payload.data();
+      this.oldTodos = allTodos.todo;
     })
 
   }
@@ -54,13 +61,40 @@ export class PomotodoTodoComponent {
     }
   }
 
-  //#region Delete Todo from firebase
+  //#region Add Todo to firebase
   todoHasDone(item: string) {
-    this.snackbar.openSnackBar('Successfully Deleted', 'success', 'ok');
+    this.snackbar.openSnackBar('Successfully Done', 'success', 'ok');
+    this.oldTodos.push(item);
 
-    this.firebaseService.DeleteDataFromArray('/users/', this.authService.userUid, 'todos', item);
+    let data = {
+      todo: this.oldTodos
+    }
+
+    this.firebaseService.addDataWithCustomUid('/todosdone/', this.authService.userUid, data);
+    this.firebaseService.deleteDataFromArray('/users/', this.authService.userUid, 'todos', item)
+      .then(() => {
+        this.snackbar.openSnackBar('Successfully Deleted', 'success', 'ok');
+      })
+      .catch(error => {
+        this.snackbar.openSnackBar('Error Deleting', 'error', 'ok');
+        console.error('Delete error:', error);
+      });
+
   }
   //#endregion
+
+  deleteTodo(item: string) {
+    this.firebaseService.deleteDataFromArray('/users/', this.authService.userUid, 'todos', item)
+      .then(() => {
+        this.snackbar.openSnackBar('Successfully Deleted', 'success', 'ok');
+      })
+      .catch(error => {
+        this.snackbar.openSnackBar('Error Deleting', 'error', 'ok');
+        console.error('Delete error:', error);
+      });
+
+
+  }
 
 
 

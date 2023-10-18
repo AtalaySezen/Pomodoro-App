@@ -21,6 +21,7 @@ export class SnackbarService {
       });
     } else {
       this.snackBar.openFromComponent(SnackbarComponent, {
+        duration: 3500,
         horizontalPosition: 'end',
         verticalPosition: 'top',
         data: { message: message, action: action, snackType: _snackType }
@@ -33,5 +34,5 @@ export class SnackbarService {
     this.snackBar.dismiss();
   }
 
-  
+
 }

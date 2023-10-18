@@ -24,7 +24,7 @@ export class FirebaseService {
     return this.firebaseData.collection(url).add(data);
   }
 
-  addDataWithCustomUid(collectionName:string,uid: string, data: any) {
+  addDataWithCustomUid(collectionName: string, uid: string, data: any) {
     return this.firebaseData.collection(collectionName).doc(uid).set(data);
   }
 
@@ -35,7 +35,8 @@ export class FirebaseService {
   DeleteFirebaseData(url: any, dataId: number) {
     return this.firebaseData.doc(url + dataId).delete();
   }
-
+  
+  
   deleteDataFromArray(collectionName: string, docId: string, arrayName: string, elementId: string): Promise<void> {
     const docRef = this.firebaseData.collection(collectionName).doc(docId);
 
