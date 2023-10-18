@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-pomotodo-todo',
@@ -11,7 +12,7 @@ export class PomotodoTodoComponent {
   loader: boolean = false;
   todosArray: any[] = [];
   todosInput: string;
-  constructor(private firebaseService: FirebaseService, private authService: AuthService) { }
+  constructor(private firebaseService: FirebaseService, private authService: AuthService, private snackbar: SnackbarService) { }
 
   ngOnInit() {
     this.getTodosData();
@@ -47,13 +48,16 @@ export class PomotodoTodoComponent {
       }
       //#endregion
       this.firebaseService.UpdateFirebaseData('/users/', this.authService.userUid, data);
+      this.snackbar.openSnackBar('Added Successfully.', 'success', 'ok');
     } else {
-      console.log('Bu veri zaten ekli.');
+      this.snackbar.openSnackBar('This data is already attached', 'info', 'ok');
     }
   }
 
   //#region Delete Todo from firebase
   todoHasDone(item: string) {
+    this.snackbar.openSnackBar('Successfully Deleted', 'success', 'ok');
+
     this.firebaseService.DeleteDataFromArray('/users/', this.authService.userUid, 'todos', item);
   }
   //#endregion

@@ -22,6 +22,8 @@ import { PomotodoTodoComponent } from './components/pomotodo-todo/pomotodo-todo.
 import { MatIconModule } from '@angular/material/icon';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { HeaderComponent } from './components/header/header.component';
     RegisteraccountComponent,
     PomotodoTodoComponent,
     HeaderComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { HeaderComponent } from './components/header/header.component';
     LoaderComponent,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireModule,
+    MatSnackBarModule,
     CommonModule,
     MatIconModule,
     MatFormFieldModule,
