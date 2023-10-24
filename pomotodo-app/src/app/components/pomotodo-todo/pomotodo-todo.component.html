@@ -5,9 +5,9 @@
     <div class="flex-col timer-btn" *ngIf="!loader">
         <div class="timer-container">
             <div class="timer-user">
-                <mat-icon (click)="saveTodos()" class="close-btn">keyboard_return</mat-icon>
-                <input (keydown)="enterPressed($event)" class="timer-input" matInput placeholder="Todo Name"
-                    [(ngModel)]="todosInput">
+                <mat-icon (click)="saveTodos()" class="close-btn" *ngIf="todosInput != ''">keyboard_return</mat-icon>
+                <textarea (keydown)="enterPressed($event)" class="timer-input"  placeholder="Todo Name"
+                    [(ngModel)]="todosInput"></textarea>
             </div>
         </div>
         <div class="old-pomos">

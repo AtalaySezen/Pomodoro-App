@@ -11,12 +11,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string;
 
   constructor(private fireAuth: AngularFireAuth, private authService: AuthService, private router: Router) {
     this.checkUserLogged();
 
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     })
 
@@ -35,7 +36,9 @@ export class LoginComponent {
       this.router.navigate(['/home']);
     }, err => {
       this.router.navigate(['/login']);
-      console.log(err);
+      console.log(err.message);
+      console.log(err.message[0])
+      this.errorMessage = 'Email or password is incorrect';
     })
 
   }

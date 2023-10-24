@@ -1,8 +1,13 @@
 <section class="container bg-login">
     <div>
-        <h1 class="header-login">Login</h1>
+        <h1 class="header-login">Sign In</h1>
     </div>
-    <div [formGroup]="loginForm">
+    <div class="login-links">
+        <a [routerLink]="['/createAccount']">
+            Don't have an account? Sign Up!
+        </a>
+    </div>
+    <div [formGroup]="loginForm" class="form">
         <div class="example-container">
             <mat-form-field>
                 <mat-label>Enter your email</mat-label>
@@ -20,10 +25,9 @@
         <div class="btn-flex">
             <button (click)="signIn()" mat-raised-button color="accent" [disabled]="loginForm.invalid">Login</button>
         </div>
-        <div class="login-links">
-            <a [routerLink]="['/createAccount']">
-                Create an account
-            </a>
+        <div class="error-message">
+            <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
         </div>
     </div>
+
 </section>

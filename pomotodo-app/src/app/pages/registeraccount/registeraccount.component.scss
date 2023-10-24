@@ -8,10 +8,20 @@
     background-color: #2e4374;
 }
 
+mat-form-field {
+    width: 100%;
+}
+
 button:disabled {
     background-color: white;
     color: black;
 }
+
+.form {
+    width: 100%;
+    max-width: 450px;
+}
+
 .login-links {
     display: flex;
     flex-direction: column;

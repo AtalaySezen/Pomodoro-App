@@ -12,7 +12,7 @@ export class PomotodoTodoComponent {
   loader: boolean = false;
   todosArray: any[] = [];
   oldTodos: any[] = [];
-  todosInput: string;
+  todosInput: string = '';
   constructor(private firebaseService: FirebaseService, private authService: AuthService, private snackbar: SnackbarService) { }
 
   ngOnInit() {
@@ -63,7 +63,6 @@ export class PomotodoTodoComponent {
 
   //#region Add Todo to firebase
   todoHasDone(item: string) {
-    this.snackbar.openSnackBar('Successfully Done', 'success', 'ok');
     this.oldTodos.push(item);
 
     let data = {
@@ -73,7 +72,7 @@ export class PomotodoTodoComponent {
     this.firebaseService.addDataWithCustomUid('/todosdone/', this.authService.userUid, data);
     this.firebaseService.deleteDataFromArray('/users/', this.authService.userUid, 'todos', item)
       .then(() => {
-        this.snackbar.openSnackBar('Successfully Deleted', 'success', 'ok');
+        this.snackbar.openSnackBar('Successfully Done', 'success', 'ok');
       })
       .catch(error => {
         this.snackbar.openSnackBar('Error Deleting', 'error', 'ok');

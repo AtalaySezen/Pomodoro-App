@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ContainerDetailComponent } from './components/container-detail/container-detail.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { ContainerDetailComponent } from './components/container-detail/containe
     CommonModule,
     MatIconModule,
     MatFormFieldModule,
+    MatExpansionModule,
+    TextFieldModule,
     ReactiveFormsModule,
     DropdownMenuComponent,
     MatInputModule,

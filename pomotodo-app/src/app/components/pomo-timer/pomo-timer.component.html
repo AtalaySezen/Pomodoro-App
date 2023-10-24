@@ -11,18 +11,21 @@
                 <mat-icon (click)="savePomotodo()" *ngIf="minutes == 0 && seconds == 0 &&pomoName != ''"
                     class="close-btn">keyboard_return</mat-icon>
                 <p class="timer-input" [class.none]="!timerRunning">{{pomotodoTimer}}</p>
-                <input (keydown)="enterPressed($event)" *ngIf="timerStopped" class="timer-input"
-                    [disabled]="disableInput" [(ngModel)]="pomoName" matInput placeholder="Pomotodo Name">
+                <textarea *ngIf="timerStopped" (keydown)="enterPressed($event)" class="timer-input"
+                    placeholder="Pomotodo Name" [(ngModel)]="pomoName"></textarea>
             </div>
         </div>
         <div class="old-pomos">
-            <div>
-                <ul>
-                    <span>Last 10 Pomos</span>
-                    <li *ngFor="let item of pomotodosArray|slice:0:10">
-                        <span>{{item}}</span>
-                    </li>
-                </ul>
+            <div class="list">
+                <p class="header">Last 10 Todos</p>
+                <div class="todo-description">
+                    <div class="todo" *ngFor="let item of pomotodosArray|slice:0:10">
+                        <p class="todo-text">
+                            {{item}}
+                        </p>
+                        <!-- <mat-icon class="icon-delete" *ngIf="item" (click)="deletePomotodo(item)">delete</mat-icon> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -8,19 +8,26 @@
         justify-content: center;
         width: 100%;
     }
-    .timer-user{
+    .timer-user {
         min-height: 45px;
     }
     .timer-input {
-        padding: 10px 30px;
+        height: 27px;
+        width: 97%;
+        padding: 10px 7px;
         outline: none;
-        color: black;
+        color: gray;
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 550;
         border: 1px solid #ddd;
-        width: 80%;
         margin: 0 auto;
         text-align: center;
+    }
+    .timer-input:focus {
+        outline: 0.7px solid gray;
+    }
+    .timer-input::placeholder {
+        font-weight: 600;
     }
     .timer-text {
         padding: 10px 30px;
@@ -43,13 +50,13 @@
     }
     .close-btn {
         position: absolute;
-        right: 2rem;
-        top: 0.8rem;
+        right: 3rem;
+        top: 1rem;
         z-index: 999;
         color: black;
         font-weight: 500;
-        width: 20px;
-        transform: scale(0.8);
+        width: 25px;
+        transform: scale(0.9);
         cursor: pointer;
     }
     .old-pomos {
@@ -59,22 +66,48 @@
         border-top: 1px solid #ddd;
         margin-top: 15px;
     }
-    ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    .list {
+        margin-top: 5px;
         width: 100%;
     }
-    ul {
-        span {
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
+    .header {
+        text-align: left;
+        font-size: 1.1rem;
+        margin-top: 5px;
     }
-    li {
-        list-style: none;
-        margin: 2px 0;
-        font-size: 0.8rem;
+    .todo-text {
+        text-align: left;
+        font-size: 1rem;
+        text-transform: capitalize;
+        width: 100%;
+        margin: 0;
+    }
+    .todo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .todo:nth-child(odd) {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .todo:nth-child(even) {
+        border-top: 1px solid #ddd;
+    }
+    mat-icon {
+        width: 35px;
+        transform: scale(1);
+    }
+    .icon-circle {
+        color: red;
+        cursor: pointer;
+    }
+    .icon-delete {
+        color: gray;
+        cursor: pointer;
     }
     span {
         color: gray;

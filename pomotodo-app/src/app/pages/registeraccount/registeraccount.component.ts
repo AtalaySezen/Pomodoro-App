@@ -12,12 +12,13 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
 })
 export class RegisteraccountComponent {
   loginForm: FormGroup;
+  errorMessage: string;
 
   constructor(private fireAuth: AngularFireAuth, private router: Router, private authService: AuthService, private firebaseService: FirebaseService) {
     this.checkUserLogged();
 
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     })
@@ -47,6 +48,7 @@ export class RegisteraccountComponent {
 
     }, err => {
       console.log(err);
+      this.errorMessage = err;
     })
 
   }

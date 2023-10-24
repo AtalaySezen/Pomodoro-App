@@ -1,8 +1,8 @@
 <section class="container bg-login">
     <div>
         <h1 class="header-login">Register Account</h1>
-    </div>
-    <div [formGroup]="loginForm">
+    </div >
+    <div class="form" [formGroup]="loginForm">
         <div class="example-container">
             <mat-form-field>
                 <mat-label>Enter your email</mat-label>
@@ -26,6 +26,9 @@
         </div>
         <div class="btn-flex">
             <button (click)="registerAccount()" mat-raised-button color="accent" [disabled]="loginForm.invalid">Sign Up</button>
+        </div>
+        <div class="error-message">
+            <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
         </div>
     </div>
 </section>
