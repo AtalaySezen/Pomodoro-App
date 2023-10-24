@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ContainerDetailComponent } from './components/container-detail/container-detail.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireModule,
     MatSnackBarModule,
+    MatSelectModule,
     CommonModule,
     MatIconModule,
     MatFormFieldModule,

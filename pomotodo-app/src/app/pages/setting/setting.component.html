@@ -1,4 +1,59 @@
 <section class="container-settings">
     <app-header></app-header>
-    settings
+    <div class="settings-options">
+        <div>
+            <h2>Settings</h2>
+        </div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Profile
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Profile Settings
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="flex-expansion" [formGroup]="form">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username">
+                    </mat-form-field>
+                    <div class="btn-update">
+                        <button (click)="updateUsername()" mat-raised-button color="primary">Update Username</button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        App
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        App Preferences
+                        <mat-icon>settings</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Pomotodo Minutes</mat-label>
+                    <mat-select (selectionChange)="selectPomotodoMinute()" [(ngModel)]="pomotodoMinute" name="food">
+                        <mat-option [value]="25">
+                            25
+                        </mat-option>
+                        <mat-option [value]="40">
+                            40
+                        </mat-option>
+                        <mat-option [value]="60">
+                            60
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
 </section>
