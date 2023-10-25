@@ -9,6 +9,7 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
 })
 export class HomeComponent {
   numberOfFinishedTodos: number = 0;
+  numberOfFinishedPomotodos: number = 0;
 
   constructor(private firebaseService: FirebaseService, private authService: AuthService) {
   }
@@ -22,7 +23,7 @@ export class HomeComponent {
   getUserDatas() {
     this.firebaseService.GetDataWithId('/users/', this.authService.userUid).subscribe(async (res: any) => {
       const data = res.payload.data();
-      console.log(data);
+      this.numberOfFinishedPomotodos = data.pomotodos.length;
     }, err => {
       console.log(err);
     })
@@ -33,7 +34,7 @@ export class HomeComponent {
   getFinishedTodos() {
     this.firebaseService.GetDataWithId('/todosdone/', this.authService.userUid).subscribe(async (res: any) => {
       const data = res.payload.data();
-      this.numberOfFinishedTodos = data.todo.length;
+      this.numberOfFinishedTodos = data?.todo.length || 0;
     }, err => {
       console.log(err);
     })

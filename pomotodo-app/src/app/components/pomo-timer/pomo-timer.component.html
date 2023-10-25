@@ -2,26 +2,31 @@
     <div class="loader-flex" *ngIf="loader">
         <app-loader [diameter]="50"></app-loader>
     </div>
-    <div class="flex-col timer-btn" *ngIf="!loader">
+    <div *ngIf="!loader" class="flex-col timer-btn">
         <div class="timer-container">
             <div class="timer-user">
-                <button *ngIf="startButton" mat-raised-button color="primary" (click)="startTimer()">Start
+                <textarea [(ngModel)]="pomodotoInput" [disabled]="!timerStopped" (keydown)="enterPressed($event)"
+                    class="timer-input" [placeholder]="pomotodoTimer"></textarea>
+                <button mat-raised-button *ngIf="!timerStopped" (click)="startTimer()" color="primary">Start
                     Pomotodo</button>
-                <mat-icon (click)="stopTimer()" *ngIf="timerRunning" class="close-btn">close</mat-icon>
-                <mat-icon (click)="savePomotodo()" *ngIf="minutes == 0 && seconds == 0 &&pomoName != ''"
-                    class="close-btn">keyboard_return</mat-icon>
-                <p class="timer-input" [class.none]="!timerRunning">{{pomotodoTimer}}</p>
-                <textarea *ngIf="timerStopped" (keydown)="enterPressed($event)" class="timer-input"
-                    placeholder="Pomotodo Name" [(ngModel)]="pomoName"></textarea>
+                <mat-icon class="close-btn" *ngIf="!pomodotoInput" (click)="stopTimer()">close</mat-icon>
+                <mat-icon *ngIf="pomodotoInput" class="close-btn">keyboard_return</mat-icon>
+
             </div>
         </div>
         <div class="old-pomos">
             <div class="list">
-                <p class="header">Last 10 Todos</p>
+                <p class="header">Last 10 Pomotodos</p>
                 <div class="todo-description">
                     <div class="todo" *ngFor="let item of pomotodosArray|slice:0:10">
                         <p class="todo-text">
-                            {{item}}
+                            <span>
+                                {{ item.startTime?.toDate() | date:'MMMM d' }}
+                                {{ item.startTime?.toDate() | date:'hh:mm' }}
+                                <span>-</span>
+                                {{ item.endTime?.toDate() |date:'hh:mm'}}
+                            </span>
+                            {{ item.name }}
                         </p>
                         <!-- <mat-icon class="icon-delete" *ngIf="item" (click)="deletePomotodo(item)">delete</mat-icon> -->
                     </div>

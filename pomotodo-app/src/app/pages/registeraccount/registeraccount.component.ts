@@ -38,8 +38,8 @@ export class RegisteraccountComponent {
       let data = {
         email: email,
         pomotodoTime: 25,
-        pomotodos: [''],
-        todos: [''],
+        pomotodos: [] as [],
+        todos: [] as [],
         username: username
       }
 

@@ -17,10 +17,10 @@
     }
     .border-pomo {
         border: 1px solid #ddd;
-        width: 100%;
-        max-width: 50%;
+        width: 50%;
+        min-width: 560px;
+        max-width: 560px;
         min-height: 600px;
-        overflow: hidden;
         text-align: center;
         flex: auto;
         padding: 20px;
@@ -52,6 +52,8 @@
         .border-pomo {
             width: 100%;
             margin: 0 1rem;
+            min-width: 100%;
+            max-width: 100%;
             max-width: 90%;
         }
         .container-detail {

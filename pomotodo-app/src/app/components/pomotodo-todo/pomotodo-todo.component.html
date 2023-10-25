@@ -6,15 +6,15 @@
         <div class="timer-container">
             <div class="timer-user">
                 <mat-icon (click)="saveTodos()" class="close-btn" *ngIf="todosInput != ''">keyboard_return</mat-icon>
-                <textarea (keydown)="enterPressed($event)" class="timer-input"  placeholder="Todo Name"
+                <textarea (keydown)="enterPressed($event)" class="timer-input" placeholder="Todo Name"
                     [(ngModel)]="todosInput"></textarea>
             </div>
         </div>
         <div class="old-pomos">
             <div class="list">
-                <p class="header">Last 10 Todos</p>
+                <p class="header"> Todos</p>
                 <div class="todo-description">
-                    <div class="todo" *ngFor="let item of todosArray|slice:0:10">
+                    <div class="todo" *ngFor="let item of todosArray">
                         <mat-icon class="icon-circle" *ngIf="item" (click)="todoHasDone(item)">check_circle</mat-icon>
                         <p class="todo-text">
                             {{item}}

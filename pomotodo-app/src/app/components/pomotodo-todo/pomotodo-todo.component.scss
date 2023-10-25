@@ -2,6 +2,7 @@
     width: 100%;
     text-align: center;
     position: relative;
+
     .timer-btn {
         display: flex;
         align-items: center;
@@ -81,10 +82,11 @@
         text-transform: capitalize;
         width: 100%;
         margin: 0;
+        white-space: normal;
     }
     .todo {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         width: 100%;
         padding: 5px 0;

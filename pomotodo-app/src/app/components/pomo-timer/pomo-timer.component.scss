@@ -14,7 +14,9 @@
     .timer-input {
         height: 27px;
         width: 97%;
-        padding: 10px 7px;
+        min-width: 523px;
+        max-width: 523px;
+        padding: 10px 0;
         outline: none;
         color: gray;
         font-size: 1rem;
@@ -46,6 +48,9 @@
         margin-top: 1rem;
         button {
             width: 90%;
+            min-width: 523px;
+            max-width: 523px;
+            margin-bottom: 5px;
         }
     }
     .close-btn {
@@ -112,4 +117,20 @@
     span {
         color: gray;
     }
+}
+
+@media (max-width: 900px) {
+    .timer {
+        .timer-input {
+            min-width: 100%;
+            max-width: 100%;
+        }
+        .timer-btn {
+            button {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+  
 }

@@ -31,7 +31,7 @@ export class PomotodoTodoComponent {
     this.firebaseService.GetDataWithId('todosdone', this.authService.userUid).subscribe((data: any) => {
       this.oldTodos = [];
       const allTodos = data.payload.data();
-      this.oldTodos = allTodos.todo;
+      this.oldTodos = allTodos?.todo || [];
     })
 
   }
