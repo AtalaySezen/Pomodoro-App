@@ -21,7 +21,8 @@
                         <input matInput formControlName="username">
                     </mat-form-field>
                     <div class="btn-update">
-                        <button (click)="updateUsername()" mat-raised-button color="primary">Update Username</button>
+                        <button (click)="updateUsername()" [disabled]="form.invalid" mat-raised-button
+                            color="primary">Update Username</button>
                     </div>
                 </div>
             </mat-expansion-panel>
@@ -35,7 +36,6 @@
                         <mat-icon>settings</mat-icon>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-
                 <mat-form-field>
                     <mat-label>Pomotodo Minutes</mat-label>
                     <mat-select [(ngModel)]="pomotodoMinute" name="food">
@@ -58,8 +58,6 @@
                         Minute</button>
                 </div>
             </mat-expansion-panel>
-
         </mat-accordion>
-
     </div>
 </section>
