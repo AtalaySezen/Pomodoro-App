@@ -6,7 +6,6 @@ Implemented Features:
 - Firebase authentication with email and password.
 - Users can create to-do lists. They can save the completed todos or delete the ones they want to remove.
 - Users can change the Pomodoro duration from the settings page.
-- If the user closes the page during an ongoing pomodoro period, it is recorded in local storage and continues where it left off when the user reopens the application.
 - On the home page, users can see the number of pomodoros and to-dos they have completed so far.
 - If users wish, they can save the Pomodoro manually.
 - Past completed pomodoros and to-do items can be viewed in a table.
