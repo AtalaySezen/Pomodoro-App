@@ -11,19 +11,18 @@
     <div class="app">
         <div class="container-detail">
             <app-container-detail [infoHeader]="'Finished Pomotodos'"
-                (click)="showPomotodosTable = !showPomotodosTable; showTodosTable = showPomotodosTable ? false : showTodosTable"
+                (click)="showPomodoroTable = !showPomodoroTable; showTodosTable = showPomodoroTable ? false : showTodosTable"
                 [infoText]="numberOfFinishedPomotodos" [iconName]="'circle'"></app-container-detail>
             <app-container-detail
-                (click)="showTodosTable = !showTodosTable; showPomotodosTable = showTodosTable ? false : showPomotodosTable"
+                (click)="showTodosTable = !showTodosTable; showPomodoroTable = showTodosTable ? false : showPomodoroTable"
                 [infoHeader]="'Finished Todos'" [iconName]="'done'"
                 [infoText]="numberOfFinishedTodos"></app-container-detail>
         </div>
     </div>
-
     <div class="app">
         <div class="container-detail">
-            <div class="table" [class.none]="!showPomotodosTable">
-                <table mat-table [dataSource]="pomotodosTable" class="mat-elevation-z8">
+            <div class="table" [class.none]="!showPomodoroTable">
+                <table mat-table [dataSource]="pomodorosTable" class="mat-elevation-z8">
                     <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef> Name </th>
                         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -41,10 +40,10 @@
                             {{ element?.endTime?.toDate() | date : "hh:mm" }}</td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="pomotodosColummns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: pomotodosColummns;"></tr>
+                    <tr mat-header-row *matHeaderRowDef="pomodorosColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: pomodorosColumns;"></tr>
                 </table>
-                <mat-paginator #paginatorPomotodo [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of datas"
+                <mat-paginator #paginatorPomodoro [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of datas"
                     class="sticky left-0">
                 </mat-paginator>
             </div>

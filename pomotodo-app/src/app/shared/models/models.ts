@@ -1,4 +1,4 @@
-export class PomotodoModel {
+export class PomodoroModel {
     name: string;
     startTime: Date;
     endTime: Date;

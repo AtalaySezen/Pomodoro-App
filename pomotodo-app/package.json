@@ -1,5 +1,5 @@
 {
-  "name": "pomotodo-app",
+  "name": "pomodoro-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

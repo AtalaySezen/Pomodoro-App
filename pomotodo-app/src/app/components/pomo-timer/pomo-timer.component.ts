@@ -12,13 +12,13 @@ import { map, take, takeWhile } from 'rxjs/operators';
 export class PomoTimerComponent {
   loader: boolean = false;
   timerStopped: boolean = false;
-  pomotodoTimer: string;
-  pomodotoInput: string = '';
+  pomodoroTimer: string;
+  pomodoroInput: string = '';
   selectedTime: number = 0;
   minutes: number = 0;
   seconds: number = 0;
   totalTimeInSeconds: number = 0;
-  pomotodosArray: any[] = [];
+  pomodorosArray: any[] = [];
   startedTime: any;
   endedTime: any;
   timerSubscription: Subscription;
@@ -27,12 +27,12 @@ export class PomoTimerComponent {
   }
 
   ngOnInit(): void {
-    this.checkContinuePomotodo();
-    this.getPomotodoData();
+    this.checkContinuePomodoro();
+    this.getPomodoroData();
   }
 
 
-  getPomotodoData() {
+  getPomodoroData() {
     this.loader = true;
     this.firebaseService
       .GetDataWithId('users', this.authService.userUid)
@@ -40,8 +40,8 @@ export class PomoTimerComponent {
         (data: any) => {
           const allDatas = data.payload.data();
           this.selectedTime = allDatas.pomotodoTime;
-          this.pomotodosArray = allDatas.pomotodos.reverse();
-          this.pomotodoTimer = `${allDatas.pomotodoTime}:00`
+          this.pomodorosArray = allDatas.pomotodos.reverse();
+          this.pomodoroTimer = `${allDatas.pomotodoTime}:00`
           this.loader = false;
         },
         (err) => {
@@ -58,7 +58,7 @@ export class PomoTimerComponent {
       this.endedTime = this.startedTime + this.selectedTime * 60000
       this.timerStopped = true;
       this.totalTimeInSeconds = this.selectedTime * 60;
-      this.setPomotodoLocalStorage();
+      this.setPomodoroLocalStorage();
     } else {
       this.totalTimeInSeconds = localStorageTimer * 60;
     }
@@ -73,9 +73,9 @@ export class PomoTimerComponent {
         const dakika = Math.floor(timer / 60);
         const saniyeKalan = timer % 60;
         if (timer > 0) {
-          this.pomotodoTimer = `${dakika}:${saniyeKalan < 10 ? '0' : ''}${saniyeKalan}`;
+          this.pomodoroTimer = `${dakika}:${saniyeKalan < 10 ? '0' : ''}${saniyeKalan}`;
         } else {
-          this.userFinishedPomotodo();
+          this.userFinishedPomodoro();
         }
       });
 
@@ -83,21 +83,21 @@ export class PomoTimerComponent {
 
 
   stopTimerButton() {
-    this.clearPomotodoLocalStorage();
+    this.clearPomodoroLocalStorage();
     if (this.timerSubscription) {
       this.timerStopped = false;
-      this.pomotodoTimer = `${this.selectedTime}:00`;
+      this.pomodoroTimer = `${this.selectedTime}:00`;
       this.timerSubscription.unsubscribe();
     }
   }
 
 
-  userFinishedPomotodo() {
-    this.pomotodoTimer = 'Pomodoto Name?';
+  userFinishedPomodoro() {
+    this.pomodoroTimer = 'Pomodoto Name?';
   }
 
 
-  setPomotodoLocalStorage() {
+  setPomodoroLocalStorage() {
     if (typeof this.startedTime === 'undefined' || typeof this.endedTime === 'undefined') {
       return;
     }
@@ -109,7 +109,7 @@ export class PomoTimerComponent {
   }
 
 
-  clearPomotodoLocalStorage() {
+  clearPomodoroLocalStorage() {
     localStorage.removeItem('pomodoroStartTime');
     localStorage.removeItem('pomodoroEndTime');
   }
@@ -117,32 +117,32 @@ export class PomoTimerComponent {
 
   enterPressed(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      this.savePomotodo(); //
+      this.savePomodoro(); //
       this.stopTimerButton();
       this.timerStopped = false;
     }
   }
 
-  savePomotodo() {
+  savePomodoro() {
     const startTime = Number(localStorage.getItem('pomodoroStartTime'));
     const endTime = Number(localStorage.getItem('pomodoroEndTime'));
     const pomodotoData = {
-      name: this.pomodotoInput,
+      name: this.pomodoroInput,
       startTime: new Date(startTime),
       endTime: new Date(endTime),
     };
 
-    this.pomotodosArray.push(pomodotoData);
+    this.pomodorosArray.push(pomodotoData);
 
-    let pomotodoData = {
-      pomotodos: this.pomotodosArray,
+    let pomodoroData = {
+      pomotodos: this.pomodorosArray,
     };
 
     this.firebaseService
-      .UpdateFirebaseData('/users/', this.authService.userUid, pomotodoData)
+      .UpdateFirebaseData('/users/', this.authService.userUid, pomodoroData)
       .then(() => {
         this.stopTimerButton();
-        this.pomodotoInput = '';
+        this.pomodoroInput = '';
       })
       .catch((error) => {
         console.error('hata oluştu: ' + error);
@@ -150,15 +150,15 @@ export class PomoTimerComponent {
   }
 
 
-  checkContinuePomotodo() {
+  checkContinuePomodoro() {
     const startTime = Number(localStorage.getItem('pomodoroStartTime'));
     const endTime = Number(localStorage.getItem('pomodoroEndTime'));
     if (startTime && endTime) {
-      this.startPomotodoTimer();
+      this.startPomodoroTimer();
     }
   }
 
-  startPomotodoTimer() {
+  startPomodoroTimer() {
     const storedEndTime = Number(localStorage.getItem('pomodoroEndTime'));
     let timeEnd = new Date(storedEndTime).valueOf();
     let timeCurrent = new Date().valueOf();

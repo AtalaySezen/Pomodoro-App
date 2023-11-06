@@ -37,8 +37,8 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-form-field>
-                    <mat-label>Pomotodo Minutes</mat-label>
-                    <mat-select [(ngModel)]="pomotodoMinute" name="food">
+                    <mat-label>Pomodoro Minutes</mat-label>
+                    <mat-select [(ngModel)]="pomodoroMinute" name="food">
                         <mat-option [value]="25">
                             25
                         </mat-option>
@@ -51,7 +51,7 @@
                     </mat-select>
                 </mat-form-field>
                 <div class="btn-update">
-                    <button (click)="updatePomotodoMinute()" mat-raised-button color="primary">Update Pomotodo
+                    <button (click)="updatePomodoroMinute()" mat-raised-button color="primary">Update Pomodoro
                         Minute</button>
                 </div>
             </mat-expansion-panel>

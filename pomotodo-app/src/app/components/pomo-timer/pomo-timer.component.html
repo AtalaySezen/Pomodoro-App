@@ -5,21 +5,21 @@
     <div *ngIf="!loader" class="flex-col timer-btn">
         <div class="timer-container">
             <div class="timer-user">
-                <input [(ngModel)]="pomodotoInput" [disabled]="!timerStopped" (keydown)="enterPressed($event)"
-                    class="timer-input" [placeholder]="pomotodoTimer">
+                <input [(ngModel)]="pomodoroInput" [disabled]="!timerStopped" (keydown)="enterPressed($event)"
+                    class="timer-input" [placeholder]="pomodoroTimer">
                 <button mat-raised-button *ngIf="!timerStopped" (click)="startTimer()" color="primary">
-                    Start Pomotodo
+                    Start Pomodoro
                 </button>
-                <mat-icon class="close-btn" *ngIf="!pomodotoInput&&timerStopped"
+                <mat-icon class="close-btn" *ngIf="!pomodoroInput&&timerStopped"
                     (click)="stopTimerButton()">close</mat-icon>
-                <mat-icon *ngIf="pomodotoInput" class="close-btn">keyboard_return</mat-icon>
+                <mat-icon *ngIf="pomodoroInput" class="close-btn">keyboard_return</mat-icon>
             </div>
         </div>
-        <div class="old-pomos" *ngIf="pomotodosArray.length != 0">
+        <div class="old-pomos" *ngIf="pomodorosArray.length != 0">
             <div class="list">
-                <p class="header">Last 10 Pomotodos</p>
+                <p class="header">Last 10 Pomodoros</p>
                 <div class="todo-description">
-                    <div class="todo" *ngFor="let item of pomotodosArray | slice : 0 : 10">
+                    <div class="todo" *ngFor="let item of pomodorosArray | slice : 0 : 10">
                         <p class="todo-text">
                             <span>{{ item?.startTime?.toDate() | date: "hh:mm" }}</span>
                             <span>-</span>

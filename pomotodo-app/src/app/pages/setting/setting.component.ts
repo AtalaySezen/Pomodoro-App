@@ -10,7 +10,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
   styleUrls: ['./setting.component.scss']
 })
 export class SettingComponent {
-  pomotodoMinute: number;
+  pomodoroMinute: number;
   form: FormGroup;
 
   constructor(private firebaseService: FirebaseService, private authService: AuthService, private snackbar: SnackbarService) {
@@ -37,9 +37,9 @@ export class SettingComponent {
   }
 
 
-  updatePomotodoMinute() {
+  updatePomodoroMinute() {
     const pomodotoData = {
-      pomotodoTime: this.pomotodoMinute,
+      pomotodoTime: this.pomodoroMinute,
     };
 
     this.firebaseService

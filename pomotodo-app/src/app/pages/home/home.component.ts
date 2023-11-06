@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { PomotodoModel, todosTable } from 'src/app/shared/models/models';
+import { PomodoroModel, todosTable } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
 
@@ -13,13 +13,13 @@ import { FirebaseService } from 'src/app/shared/services/firebase.service';
 export class HomeComponent {
   numberOfFinishedTodos: number = 0;
   numberOfFinishedPomotodos: number = 0;
-  pomotodosColummns: string[] = ['date', 'startTime', 'endTime'];
+  pomodorosColumns: string[] = ['date', 'startTime', 'endTime'];
   todosColumns: string[] = ['name'];
-  showPomotodosTable: boolean = false;
+  showPomodoroTable: boolean = false;
   showTodosTable: boolean = false;
-  pomotodosTable = new MatTableDataSource<PomotodoModel>();
+  pomodorosTable = new MatTableDataSource<PomodoroModel>();
   todosTable = new MatTableDataSource<todosTable>();
-  @ViewChild('paginatorPomotodo') paginatorPomotodo: MatPaginator;
+  @ViewChild('paginatorPomodoro') paginatorPomodoro: MatPaginator;
   @ViewChild('paginatorTodo') paginatorTodo: MatPaginator;
 
   constructor(private firebaseService: FirebaseService, private authService: AuthService) {
@@ -34,8 +34,8 @@ export class HomeComponent {
   getUserDatas() {
     this.firebaseService.GetDataWithId('/users/', this.authService.userUid).subscribe(async (res: any) => {
       const data = res.payload.data();
-      this.pomotodosTable = await new MatTableDataSource(data.pomotodos);
-      this.pomotodosTable.paginator = await this.paginatorPomotodo;
+      this.pomodorosTable = await new MatTableDataSource(data.pomotodos);
+      this.pomodorosTable.paginator = await this.paginatorPomodoro;
       this.numberOfFinishedPomotodos = await data.pomotodos.length || 0;
     }, err => {
       console.log(err);
