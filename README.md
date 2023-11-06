@@ -2,9 +2,10 @@
 Angular 16 implementation of Pomodoro Timer
 If you need more information about the Pomodoro Technique: [Read more on Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
-username : user@example.com 
+Link:https://pomotodo-app.web.app/home
+Username : user@example.com 
 <br>
-password : 123456
+Password : 123456
 
 Implemented Features:
 - Firebase authentication with email and password.
