@@ -53,10 +53,11 @@ export class PomoTimerComponent {
 
 
   startTimer(localStorageTimer?: number) {
+    this.timerStopped = true;
+
     if (!localStorageTimer) {
       this.startedTime = new Date().getTime();
       this.endedTime = this.startedTime + this.selectedTime * 60000
-      this.timerStopped = true;
       this.totalTimeInSeconds = this.selectedTime * 60;
       this.setPomodoroLocalStorage();
     } else {
