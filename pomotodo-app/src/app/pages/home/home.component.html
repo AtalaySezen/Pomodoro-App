@@ -1,6 +1,5 @@
 <section class="container-home">
     <app-header></app-header>
-
     <div class="flex-row app">
         <div class="border-pomo">
             <app-pomo-timer></app-pomo-timer>
@@ -9,13 +8,60 @@
             <app-pomotodo-todo></app-pomotodo-todo>
         </div>
     </div>
-
     <div class="app">
         <div class="container-detail">
-            <app-container-detail [infoHeader]="'Finished Pomotodos'" [infoText]="numberOfFinishedPomotodos" [iconName]="'circle'"></app-container-detail>
-            <app-container-detail [infoHeader]="'Finished Todos'" [iconName]="'done'"
+            <app-container-detail [infoHeader]="'Finished Pomotodos'"
+                (click)="showPomotodosTable = !showPomotodosTable; showTodosTable = showPomotodosTable ? false : showTodosTable"
+                [infoText]="numberOfFinishedPomotodos" [iconName]="'circle'"></app-container-detail>
+            <app-container-detail
+                (click)="showTodosTable = !showTodosTable; showPomotodosTable = showTodosTable ? false : showPomotodosTable"
+                [infoHeader]="'Finished Todos'" [iconName]="'done'"
                 [infoText]="numberOfFinishedTodos"></app-container-detail>
         </div>
     </div>
 
+    <div class="app">
+        <div class="container-detail">
+            <div class="table" [class.none]="!showPomotodosTable">
+                <table mat-table [dataSource]="pomotodosTable" class="mat-elevation-z8">
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="startTime">
+                        <th mat-header-cell *matHeaderCellDef> Start Time</th>
+                        <td mat-cell *matCellDef="let element"> {{element?.startTime?.toDate() | date : "MMMM d" }}
+                            {{ element?.startTime?.toDate() | date : "hh:mm" }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="endTime">
+                        <th mat-header-cell *matHeaderCellDef> End Time </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element?.endTime?.toDate() | date : "MMMM d" }}
+                            {{ element?.endTime?.toDate() | date : "hh:mm" }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="pomotodosColummns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: pomotodosColummns;"></tr>
+                </table>
+                <mat-paginator #paginatorPomotodo [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of datas"
+                    class="sticky left-0">
+                </mat-paginator>
+            </div>
+
+            <div class="table" [class.none]="!showTodosTable">
+                <table mat-table [dataSource]="todosTable" class="mat-elevation-z8">
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="todosColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: todosColumns;"></tr>
+                </table>
+                <mat-paginator #paginatorTodo [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of datas"
+                    class="sticky left-0">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
 </section>

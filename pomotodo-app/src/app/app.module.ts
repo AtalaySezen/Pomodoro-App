@@ -27,6 +27,8 @@ import { ContainerDetailComponent } from './components/container-detail/containe
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -51,9 +53,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     CommonModule,
     MatIconModule,
+    MatTableModule,
     MatFormFieldModule,
     MatExpansionModule,
     TextFieldModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     DropdownMenuComponent,
     MatInputModule,
