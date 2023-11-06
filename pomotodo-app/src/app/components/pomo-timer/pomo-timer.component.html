@@ -10,29 +10,21 @@
                 <button mat-raised-button *ngIf="!timerStopped" (click)="startTimer()" color="primary">
                     Start Pomotodo
                 </button>
-                <mat-icon class="close-btn" *ngIf="!pomodotoInput&&timerStopped" (click)="stopTimerButton()">close</mat-icon>
+                <mat-icon class="close-btn" *ngIf="!pomodotoInput&&timerStopped"
+                    (click)="stopTimerButton()">close</mat-icon>
                 <mat-icon *ngIf="pomodotoInput" class="close-btn">keyboard_return</mat-icon>
             </div>
         </div>
-        <div class="old-pomos">
+        <div class="old-pomos" *ngIf="pomotodosArray.length != 0">
             <div class="list">
                 <p class="header">Last 10 Pomotodos</p>
                 <div class="todo-description">
                     <div class="todo" *ngFor="let item of pomotodosArray | slice : 0 : 10">
                         <p class="todo-text">
-                            <span>
-                                {{ item?.startTime?.toDate() | date : "MMMM d" }}
-                            </span>
-                            <span>
-                                {{ item?.startTime?.toDate() | date : "hh:mm" }}
-                            </span>
+                            <span>{{ item?.startTime?.toDate() | date: "hh:mm" }}</span>
                             <span>-</span>
-                            <span>
-                                {{ item?.endTime?.toDate() | date : "hh:mm" }}
-                            </span>
-                            <span>
-                                {{ item.name }}
-                            </span>
+                            <span>{{ item?.endTime?.toDate() | date: "hh:mm" }}</span>
+                            <span>{{ item?.name }}</span>
                         </p>
                     </div>
                 </div>

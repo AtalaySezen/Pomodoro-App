@@ -12,22 +12,24 @@
     .timer-user {
         min-height: 45px;
     }
-    .timer-input {
+    .todo-input {
         height: 27px;
         width: 97%;
-        padding: 10px 7px;
+        min-width: 523px;
+        max-width: 523px;
+        padding: 10px 0;
         outline: none;
         color: gray;
         font-size: 1rem;
         font-weight: 550;
         border: 1px solid #ddd;
         margin: 0 auto;
-        text-align: left;
+        text-align: center;
     }
-    .timer-input:focus {
+    .todo-input:focus {
         outline: 0.7px solid gray;
     }
-    .timer-input::placeholder {
+    .todo-input::placeholder {
         font-weight: 600;
     }
     .timer-text {

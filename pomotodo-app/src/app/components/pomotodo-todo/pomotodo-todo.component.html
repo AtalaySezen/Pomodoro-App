@@ -6,11 +6,11 @@
         <div class="timer-container">
             <div class="timer-user">
                 <mat-icon (click)="saveTodos()" class="close-btn" *ngIf="todosInput != ''">keyboard_return</mat-icon>
-                <textarea (keydown)="enterPressed($event)" class="timer-input" placeholder="Todo Name"
-                    [(ngModel)]="todosInput"></textarea>
+                <input (keydown)="enterPressed($event)" class="todo-input" placeholder="Todo Name"
+                    [(ngModel)]="todosInput">
             </div>
         </div>
-        <div class="old-pomos">
+        <div class="old-pomos" *ngIf="todosArray.length != 0">
             <div class="list">
                 <p class="header"> Todos</p>
                 <div class="todo-description">

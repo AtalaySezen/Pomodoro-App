@@ -11,26 +11,23 @@ import { map, take, takeWhile } from 'rxjs/operators';
 })
 export class PomoTimerComponent {
   loader: boolean = false;
+  timerStopped: boolean = false;
   pomotodoTimer: string;
+  pomodotoInput: string = '';
   selectedTime: number = 0;
   minutes: number = 0;
   seconds: number = 0;
-  timerStopped: boolean = false;
-  pomodotoInput: string = '';
+  totalTimeInSeconds: number = 0;
   pomotodosArray: any[] = [];
   startedTime: any;
   endedTime: any;
   timerSubscription: Subscription;
-  totalTimeInSeconds: number = 0;
 
   constructor(private authService: AuthService, private firebaseService: FirebaseService) {
-    window.addEventListener('visibilitychange', () => {
-      // this.checkContinuePomotodo();
-    });
   }
 
   ngOnInit(): void {
-    // this.checkContinuePomotodo();
+    this.checkContinuePomotodo();
     this.getPomotodoData();
   }
 
@@ -43,7 +40,6 @@ export class PomoTimerComponent {
         (data: any) => {
           const allDatas = data.payload.data();
           this.selectedTime = allDatas.pomotodoTime;
-          this.totalTimeInSeconds = allDatas.pomotodoTime * 60;
           this.pomotodosArray = allDatas.pomotodos.reverse();
           this.pomotodoTimer = `${allDatas.pomotodoTime}:00`
           this.loader = false;
@@ -56,12 +52,16 @@ export class PomoTimerComponent {
   }
 
 
-  startTimer() {
-    this.startedTime = new Date().getTime();
-    this.endedTime = this.startedTime + this.totalTimeInSeconds * 1000;
-    this.timerStopped = true;
-
-    this.setPomotodoLocalStorage();
+  startTimer(localStorageTimer?: number) {
+    if (!localStorageTimer) {
+      this.startedTime = new Date().getTime();
+      this.endedTime = this.startedTime + this.selectedTime * 60000
+      this.timerStopped = true;
+      this.totalTimeInSeconds = this.selectedTime * 60;
+      this.setPomotodoLocalStorage();
+    } else {
+      this.totalTimeInSeconds = localStorageTimer * 60;
+    }
 
     this.timerSubscription = interval(1000)
       .pipe(
@@ -78,6 +78,7 @@ export class PomoTimerComponent {
           this.userFinishedPomotodo();
         }
       });
+
   }
 
 
@@ -153,51 +154,21 @@ export class PomoTimerComponent {
     const startTime = Number(localStorage.getItem('pomodoroStartTime'));
     const endTime = Number(localStorage.getItem('pomodoroEndTime'));
     if (startTime && endTime) {
-      // this.startPomotodoTimer();
+      this.startPomotodoTimer();
     }
   }
 
+  startPomotodoTimer() {
+    const storedEndTime = Number(localStorage.getItem('pomodoroEndTime'));
+    let timeEnd = new Date(storedEndTime).valueOf();
+    let timeCurrent = new Date().valueOf();
 
-  // startPomotodoTimer() {
-  //   const storedStartTime = Number(localStorage.getItem('pomodoroStartTime'));
-  //   const storedEndTime = Number(localStorage.getItem('pomodoroEndTime'));
+    const timeDifferenceInMilliseconds = timeEnd - timeCurrent;
+    const timeDifferenceInMinutes = timeDifferenceInMilliseconds / (1000 * 60);
+    this.totalTimeInSeconds = timeDifferenceInMilliseconds * 60;
+    this.startTimer(Math.floor(timeDifferenceInMinutes));
 
-  //   if (storedStartTime && storedEndTime) {
-  //     const currentTime = new Date().getTime();
-  //     const remainingTimeInSeconds = Math.floor((storedEndTime - currentTime) / 1000);
-
-  //     if (remainingTimeInSeconds > 0) {
-  //       this.totalTimeInSeconds = remainingTimeInSeconds;
-  //       this.startedTime = storedStartTime;
-  //       this.endedTime = storedEndTime;
-  //       this.timerStopped = true;
-  //     } else {
-  //       this.totalTimeInSeconds = this.minutes * 60 + this.seconds;
-  //       this.startedTime = new Date().getTime();
-  //       this.endedTime = this.startedTime + this.totalTimeInSeconds * 1000;
-  //       this.timerStopped = true;
-
-  //       // Yerel depoya başlama ve bitiş zamanlarını kaydet
-  //       this.setPomotodoLocalStorage();
-  //     }
-
-  //     this.timerSubscription = interval(1000)
-  //       .pipe(
-  //         map((timer) => this.endedTime - new Date().getTime() - timer * 1000),
-  //         takeWhile((timer) => timer >= 0),
-  //         take(1500)
-  //       )
-  //       .subscribe((timer) => {
-  //         const dakika = Math.floor(timer / 60);
-  //         const saniyeKalan = timer % 60;
-  //         if (timer > 0) {
-  //           console.log(`${dakika}:${saniyeKalan < 10 ? '0' : ''}${saniyeKalan}`);
-  //         } else {
-  //           console.log("Süre bitti!");
-  //         }
-  //       });
-  //   }
-  // }
+  }
 
 
 

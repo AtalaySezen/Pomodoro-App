@@ -10,18 +10,18 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 })
 export class PomotodoTodoComponent {
   loader: boolean = false;
+  todosInput: string = '';
   todosArray: any[] = [];
   oldTodos: any[] = [];
-  todosInput: string = '';
   constructor(private firebaseService: FirebaseService, private authService: AuthService, private snackbar: SnackbarService) { }
 
   ngOnInit() {
     this.getTodosData();
   }
 
+
   getTodosData() {
     this.loader = true;
-
     this.firebaseService.GetDataWithId('users', this.authService.userUid).subscribe((data: any) => {
       const allDatas = data.payload.data();
       this.todosArray = allDatas.todos.reverse();
@@ -49,13 +49,13 @@ export class PomotodoTodoComponent {
     //#region Check todosArray has already same value:
     if (!this.todosArray.includes(newTodo)) {
       this.todosArray.push(newTodo);
-      this.todosInput = '';
       let data = {
         todos: this.todosArray
       }
       //#endregion
       this.firebaseService.UpdateFirebaseData('/users/', this.authService.userUid, data);
       this.snackbar.openSnackBar('Added Successfully.', 'success', 'ok');
+      this.todosInput = '';
     } else {
       this.snackbar.openSnackBar('This data is already attached', 'info', 'ok');
     }
@@ -91,10 +91,7 @@ export class PomotodoTodoComponent {
         this.snackbar.openSnackBar('Error Deleting', 'error', 'ok');
         console.error('Delete error:', error);
       });
-
-
   }
-
 
 
 
