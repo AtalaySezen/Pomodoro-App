@@ -3,6 +3,7 @@ Angular 16 implementation of Pomodoro Timer
 If you need more information about the Pomodoro Technique: [Read more on Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
 username : user@example.com 
+<br>
 password : 123456
 
 Implemented Features:
