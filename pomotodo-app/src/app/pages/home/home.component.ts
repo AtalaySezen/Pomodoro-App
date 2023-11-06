@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { PomotodoModel, todosTable } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
 
@@ -16,8 +17,8 @@ export class HomeComponent {
   todosColumns: string[] = ['name'];
   showPomotodosTable: boolean = false;
   showTodosTable: boolean = false;
-  pomotodosTable = new MatTableDataSource<any>();
-  todosTable = new MatTableDataSource<any>();
+  pomotodosTable = new MatTableDataSource<PomotodoModel>();
+  todosTable = new MatTableDataSource<todosTable>();
   @ViewChild('paginatorPomotodo') paginatorPomotodo: MatPaginator;
   @ViewChild('paginatorTodo') paginatorTodo: MatPaginator;
 

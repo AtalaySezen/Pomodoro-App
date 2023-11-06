@@ -35,8 +35,8 @@ export class FirebaseService {
   DeleteFirebaseData(url: any, dataId: number) {
     return this.firebaseData.doc(url + dataId).delete();
   }
-  
-  
+
+
   deleteDataFromArray(collectionName: string, docId: string, arrayName: string, elementId: string): Promise<void> {
     const docRef = this.firebaseData.collection(collectionName).doc(docId);
 
@@ -54,10 +54,10 @@ export class FirebaseService {
           })
           .catch(error => {
             console.error('Error removing element from the array:', error);
-            reject(error); // Reject the promise with the error
+            reject(error);
           });
 
-        this.valueChangesSubscription.unsubscribe(); // Unsubscribe after the update
+        this.valueChangesSubscription.unsubscribe();
       });
     });
   }
