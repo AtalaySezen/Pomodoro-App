@@ -15,5 +15,4 @@ Implemented Features:
 - On the home page, users can see the number of pomodoros and to-dos they have completed so far.
 - Past completed pomodoros and todos and to-do items can be viewed in a table.
 
-Please support this project by simply giving it a Github star ⭐. Share this repository with friends on Twitter and everywhere else you can. 🙏 Thank you!
     
